@@ -26,9 +26,7 @@ public ArrayList<BookDTO> getBookList() {
 }
 
 public void deleteBook(int index){
-    System.out.println("제거할 책의 번호를 입력해주세요.");
-    int deleteNum = sc.nextInt();
-    bookList.remove(deleteNum);
+    bookList.remove(index);
 }
 
 public void searchBook(String title){
