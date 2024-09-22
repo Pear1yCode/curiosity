@@ -45,7 +45,6 @@ public void searchBook(String title){
         System.out.println(bookList.get(index));
     } else {
         System.out.println("책이 없습니다.");
-        System.out.println(bookList);
     }
 }
 
