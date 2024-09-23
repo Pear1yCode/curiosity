@@ -47,6 +47,12 @@ public void searchBook(String title){
     searchBook.setTitle(searchTitle); // 생성한 객체에 책 이름을 저장해주어 이름 비교용 책 객체의 이름 변경
     int index = bookList.indexOf(searchBook); // indexOf의 내부에는 객체가 들어가야해서 searchTitle은 적절하지 못함
     if (index != -1) {
+    // 책 번호 정렬 부분
+    for (int i = 0; i < bookList.size() ; i++) { // i <= bookList.size() 에서 =를 넣으면 오류발생하므로 잘 확인할 것
+    int j = i + 1;
+    bookList.get(i).setbNo(j);
+    }
+    // 책 번호 정렬 부분 끝
         System.out.println(bookList.get(index));
     } else {
         System.out.println("책이 없습니다.");
@@ -79,14 +85,15 @@ public void displayAll(){
     if (bookList.size() == 0) {
         System.out.println("출력할 도서가 없습니다.");
     } else {
+        // addbook에서 인덱스별로 책에 번호가 씌워지지만 앞쪽 책이 지워졌을 때 번호가 비거나 제대로 돼 있지 않은 문제를 해결하기 위해 책을 전체 조회했을 때 다시 한번 앞으로 당겨지게끔 설정했다.
+        for (int i = 0; i < bookList.size() ; i++) { // i <= bookList.size() 에서 =를 넣으면 오류발생하므로 잘 확인할 것
+            int j = i + 1;
+            bookList.get(i).setbNo(j);
+        }
         Iterator<BookDTO> bookIter = bookList.iterator();
         while (bookIter.hasNext()) {
             System.out.println(bookIter.next());
         }
-    }
-    for (int i = 0; i < bookList.size() ; i++) {
-        int index = i + 1;
-        bookList.get(i).setbNo(index);
     }
     // 이게맞나?
     // 책 전체의 정보가 나오는 로직이 필요할까?
