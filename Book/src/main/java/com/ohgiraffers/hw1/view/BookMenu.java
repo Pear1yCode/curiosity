@@ -2,7 +2,6 @@ package com.ohgiraffers.hw1.view;
 
 import com.ohgiraffers.hw1.model.dto.BookDTO;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BookMenu {
