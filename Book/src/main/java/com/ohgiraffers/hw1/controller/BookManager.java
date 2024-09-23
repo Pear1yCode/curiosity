@@ -84,9 +84,8 @@ public void displayAll(){
             System.out.println(bookIter.next());
         }
     }
-    for (int i = 0; i <= bookList.size() ; i++) {
-        int index = 1;
-        index += i;
+    for (int i = 0; i < bookList.size() ; i++) {
+        int index = i + 1;
         bookList.get(i).setbNo(index);
     }
     // 이게맞나?
