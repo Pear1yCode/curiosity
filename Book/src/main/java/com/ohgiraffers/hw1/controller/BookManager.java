@@ -51,10 +51,18 @@ public void searchBook(String title){
 //    } else {
 //        System.out.println("책이 없습니다.");
 //    }
+    // 번호 정렬 부분
         for (int i = 0; i < bookList.size() ; i++) { // i <= bookList.size() 에서 =를 넣으면 오류발생하므로 잘 확인할 것
-            int j = i + 1;
-            bookList.get(i).setbNo(j);
+            int index = i + 1;
+            bookList.get(i).setbNo(index);
         }
+    // 번호 정렬 부분 끝
+    /* 번호 정렬 부분에서 조금 다르게 할 수 있는데 위에가 더 효율적이라고 할 수 있다.
+    for (int i = 0; i < bookList.size(); i++ {
+        int index = i + 1;
+        bookList.get(i-1).setbNo(index);
+        } 로도 가능
+        */
     for (int i = 0 ; i < bookList.size(); i++) {
         int equal = bookList.get(i).getTitle().indexOf(searchTitle);
         if (equal != -1) {
@@ -89,10 +97,11 @@ public void displayAll(){
     if (bookList.size() == 0) {
         System.out.println("출력할 도서가 없습니다.");
     } else {
+        // 번호 정렬 부분
         for (int i = 0; i < bookList.size() ; i++) {
-            int j = i + 1;
-            bookList.get(i).setbNo(j);
-        }
+            int index = i + 1;
+            bookList.get(i).setbNo(index);
+        } // 번호 정렬 부분 끝
         Iterator<BookDTO> bookIter = bookList.iterator();
         while (bookIter.hasNext()) {
             System.out.println(bookIter.next());
