@@ -64,9 +64,14 @@ public void searchBook(String title){
         } 로도 가능
         */
     for (int i = 0 ; i < bookList.size(); i++) {
+        //     boolean equal = bookList.get(i).getTitle().equals(searchTitle); eqauls를 쓰기위해서는 equal은 boolean값이 와야 한다.
+        //     다만 equals는 정확하게 같아야 하기 때문에 contain까지 추가되야 할 수 있는 비효율성이 있어 indexOf를 쓰는게 좋은 것 같다.
+        //     indexOf 자체에 contain의 성질인 포함돼 있으면 전부 찾아준다.
         int equal = bookList.get(i).getTitle().indexOf(searchTitle);
         if (equal != -1) {
             System.out.println(bookList.get(i));
+        } else {
+            System.out.println("검색된 책이 없습니다.");
         }
     }
 }
