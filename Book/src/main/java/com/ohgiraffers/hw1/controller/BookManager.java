@@ -27,6 +27,7 @@ public void addBook(BookDTO book) {
         System.out.println("책이 없음");
     }
 }
+
 public ArrayList<BookDTO> getBookList() {
     return bookList;
 }
@@ -83,8 +84,12 @@ public void displayAll(){
             System.out.println(bookIter.next());
         }
     }
+    for (int i = 0; i <= bookList.size() ; i++) {
+        int index = 1;
+        index += i;
+        bookList.get(i).setbNo(index);
+    }
     // 이게맞나?
-
     // 책 전체의 정보가 나오는 로직이 필요할까?
 }
 
