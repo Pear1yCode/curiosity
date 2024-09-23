@@ -44,6 +44,12 @@ public void searchBook(String title){
     BookMenu bm = new BookMenu();
     String searchTitle = bm.inputBookTitle(); // 제목을 inputBookTitle에서 받고 String searchTitle에 저장한 상태
 
+    /* 이 부분을 사용하지 않게 된 이유는 새로운 BookDTO에 대한 객체를 생성하고 그 객체에 입력한 책의 이름을 넣어 bookList에 있는 객체와 비교하려고 했다.
+    그러나 문제점이 있었는데 bookList의 객체에 책 제목만 있다면 가능하겠지만 책 제목 뿐만 아니라 책 번호나 다른 BookDTO의 필드 내용이 딸려와 객체가 같다고 판단하지 못한다.
+        Ex) bookList에 있는 책 : [책 번호 : 1 , 책 제목 : GoldFish, 책 카테고리 : 1, 책 저자 : Raymond Chandler]라는 객체와
+            searchBook(비교하기 위해 새로 만든 BookDTO의 객체) : [책 번호 : 0, 책 : 제목 : GoldFish(setter를 통해 내가 검색한 책 이름이 여기에 들어옴), 책 카테고리 : 0, 책 저자 : null] 로 나머지 값은 초기화 값이 들어와서
+            결국 객체가 다르다고 판단하고 무조건 -1이 반환되어 제대로 비교할 수 없게 된다.
+    
 //    BookDTO searchBook = new BookDTO(); // 비교를 위한 책 객체 생성
 //    searchBook.setTitle(searchTitle); // 생성한 객체에 책 이름을 저장해주어 이름 비교용 책 객체의 이름 변경
 //    int index = bookList.indexOf(searchBook); // indexOf의 내부에는 객체가 들어가야해서 searchTitle은 적절하지 못함
@@ -51,13 +57,18 @@ public void searchBook(String title){
 //    } else {
 //        System.out.println("책이 없습니다.");
 //    }
+
+따라서 아래의 번호정렬 부분 아래부분의 내용이 적절하다는 결론과 함께 변경했다.
+*/
+
+    
     // 번호 정렬 부분
         for (int i = 0; i < bookList.size() ; i++) { // i <= bookList.size() 에서 =를 넣으면 오류발생하므로 잘 확인할 것
             int index = i + 1;
             bookList.get(i).setbNo(index);
         }
     // 번호 정렬 부분 끝
-    /* 번호 정렬 부분에서 조금 다르게 할 수 있는데 위에가 더 효율적이라고 할 수 있다.
+    /* 번호 정렬 부분에서 조금 다르게 할 수 있는데 위에가 더 효율적이라고 할 수 있고 이렇게 사용해도 IndexOutOfBoundsException 에러가 뜨는 경우가 있어 위에 것을 사용하는게 맞다.
     for (int i = 0; i < bookList.size(); i++ {
         int index = i + 1;
         bookList.get(i-1).setbNo(index);
@@ -67,10 +78,10 @@ public void searchBook(String title){
         //     boolean equal = bookList.get(i).getTitle().equals(searchTitle); eqauls를 쓰기위해서는 equal은 boolean값이 와야 한다.
         //     다만 equals는 정확하게 같아야 하기 때문에 contain까지 추가되야 할 수 있는 비효율성이 있어 indexOf를 쓰는게 좋은 것 같다.
         //     indexOf 자체에 contain의 성질인 포함돼 있으면 전부 찾아준다.
-        int equal = bookList.get(i).getTitle().indexOf(searchTitle);
-        if (equal != -1) {
+        int equal = bookList.get(i).getTitle().indexOf(searchTitle); // bookList의 i번째의 getTitle을 통한 제목을 indexOf로 입력한 제목(searchTitle)과 비교하였다.
+        if (equal != -1) { // -1이 아니라면 제대로 나왔다는 뜻이므로 아래 bookList의 i번째를 출력하라고 했다.
             System.out.println(bookList.get(i));
-        } else {
+        } else { // else라면 -1(indexOf)이 나왔을 때만 있으므로 같은게 없다는 뜻이므로 검색된 책이 없다는 내용을 출력해준다.
             System.out.println("검색된 책이 없습니다.");
         }
     }
