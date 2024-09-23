@@ -1,6 +1,7 @@
 package com.ohgiraffers.hw1.controller;
 
 import com.ohgiraffers.hw1.model.comparator.AscCategory;
+import com.ohgiraffers.hw1.model.comparator.DescCategory;
 import com.ohgiraffers.hw1.model.dto.BookDTO;
 import com.ohgiraffers.hw1.view.BookMenu;
 
@@ -16,21 +17,25 @@ public class BookManager {
     };
 
 
-// inputbook을 굳이 여기서 연결할 필요없고 메인메소드에서 합치면 되는 것 같다.
+// inputbook을 굳이 여기서 연결할 필요없고(연결하기가 어렵다? 만든 객체를 가져와야하는?) 메인메소드에서 합치면 되는 것 같다.
 public void addBook(BookDTO book) {
     bookList.add(book);
+    int bNo = bookList.size();
+    if (bookList.size() != 0) {
+        book.setbNo(bNo);
+    } else {
+        System.out.println("책이 없음");
+    }
 }
 public ArrayList<BookDTO> getBookList() {
     return bookList;
 }
 
 public void deleteBook(int index){
-    System.out.println("제거할 책의 번호를 입력해주세요.");
-    int deleteNum = sc.nextInt();
     if(bookList.size() == 0) {
         System.out.println("책이 없습니다.");
     } else {
-        bookList.remove(deleteNum);
+        bookList.remove(index);
     }
 }
 
@@ -113,5 +118,4 @@ public void printBookList(ArrayList<BookDTO> br) {
         System.out.println(book);
     }
 }
-
 }
