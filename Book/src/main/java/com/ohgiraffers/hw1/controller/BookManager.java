@@ -1,7 +1,6 @@
 package com.ohgiraffers.hw1.controller;
 
 import com.ohgiraffers.hw1.model.comparator.AscCategory;
-import com.ohgiraffers.hw1.model.comparator.DescCategory;
 import com.ohgiraffers.hw1.model.dto.BookDTO;
 import com.ohgiraffers.hw1.view.BookMenu;
 
