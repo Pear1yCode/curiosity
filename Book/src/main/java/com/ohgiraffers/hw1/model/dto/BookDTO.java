@@ -33,7 +33,7 @@ public class BookDTO {
     }
 
     // getter
-    public int getbBNo() {
+    public int getbNo() {
         return bNo;
     }
     public int getCategory() {
@@ -49,8 +49,8 @@ public class BookDTO {
     @Override
     public String toString() {
         return "책 정보{" +
-                "책 번호 =" + bNo +
-                ", ( 1. 인문, 2. 자연과학 3. 의료 4. 기타 ) 책 장르 =" + category +
+                "책 번호 = " + bNo +
+                ", 책 장르 =" + category + "(1. 인문, 2. 자연과학, 3. 의료, 4. 기타)" +
                 ", 책 제목 ='" + title + '\'' +
                 ", 책 저자 ='" + author + '\'' +
                 '}';
