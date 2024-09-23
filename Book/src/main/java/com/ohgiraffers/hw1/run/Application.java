@@ -1,7 +1,6 @@
 package com.ohgiraffers.hw1.run;
 
 import com.ohgiraffers.hw1.controller.BookManager;
-import com.ohgiraffers.hw1.model.comparator.DescCategory;
 import com.ohgiraffers.hw1.model.dto.BookDTO;
 import com.ohgiraffers.hw1.view.BookMenu;
 
@@ -45,10 +44,11 @@ public class Application {
             } else {
                     System.out.println("1. 오름차순, 2. 내림차순 중 한가지 번호를 입력바랍니다.");
                 }
+                break;
             case 3 :
                 System.out.println("제거할 책의 번호를 입력하세요.");
                 int deleteNum = sc.nextInt();
-                bmm.deleteBook(deleteNum);
+                bmm.deleteBook(deleteNum - 1);
                 break;
             case 4 :
                 String bookName = sc.nextLine();
@@ -62,6 +62,5 @@ public class Application {
                 break;
             }
         }
-
     }
 }
